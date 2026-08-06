@@ -77,8 +77,417 @@
   h1,h2,h3,h4{font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.01em;}
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; display:block;}
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-vis… 
-  
-  
-  
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+    outline:2px solid var(--honey); outline-offset:3px;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px; position:relative; z-index:2;}
 
+  .ph-img{
+    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    background:repeating-linear-gradient(135deg, var(--cream-2), var(--cream-2) 10px, var(--cream-3) 10px, var(--cream-3) 20px);
+    color:var(--coffee-soft); font-size:12px; letter-spacing:0.05em; text-align:center; padding:10px;
+    border:1px dashed rgba(74,17,40,0.3);
+  }
+
+  /* DIVIDERS & FLOATING ICONS */
+  .divider{position:relative; z-index:2; line-height:0; margin-top:-1px;}
+  .divider svg{width:100%; height:70px; display:block;}
+  .float-icon{position:absolute; opacity:0.55; animation:floaty 7s ease-in-out infinite;}
+  @keyframes floaty{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-16px) rotate(6deg);}
+  }
+
+  /* NAV */
+  header{position:fixed; top:0; left:0; right:0; z-index:100; padding:22px 0; transition:background .4s ease, padding .4s ease, box-shadow .4s ease;}
+  header.scrolled{background:rgba(251,243,231,0.95); backdrop-filter:blur(12px); padding:14px 0; box-shadow:0 1px 0 var(--line);}
+  nav{display:flex; align-items:center; justify-content:space-between;}
+  .brand{font-family:'Fraunces', serif; font-size:21px; font-weight:600; display:flex; align-items:center; gap:12px;}
+  .brand svg{width:32px; height:32px; flex-shrink:0;}
+  .brand-text{display:flex; flex-direction:column; line-height:1.15;}
+  .brand-text em{font-style:normal; font-family:'Work Sans',sans-serif; font-size:10px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; opacity:0.55; margin-top:2px;}
+  .nav-links{display:flex; gap:36px; font-size:14px; letter-spacing:0.03em;}
+  .nav-links a{position:relative; padding-bottom:4px; opacity:0.8; transition:opacity .25s ease;}
+  .nav-links a::after{content:''; position:absolute; left:0; bottom:0; height:1px; width:0; background:var(--honey); transition:width .3s ease;}
+  .nav-links a:hover{opacity:1;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{background:var(--coffee); color:var(--cream); padding:11px 24px; font-size:13px; letter-spacing:0.04em; border-radius:24px; transition:all .25s ease; box-shadow:0 6px 16px -6px rgba(74,17,40,0.4);}
+  .nav-cta:hover{background:var(--honey); transform:translateY(-1px); box-shadow:0 10px 20px -6px rgba(201,138,44,0.5);}
+  .menu-toggle{display:none; background:none; border:none; color:var(--coffee); font-size:26px; cursor:pointer;}
+
+  /* HERO */
+  .hero{
+    position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    padding-top:120px; overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 550px at 85% 5%, rgba(224,165,63,0.32), transparent 60%),
+      radial-gradient(ellipse 750px 650px at 0% 100%, rgba(201,112,100,0.18), transparent 65%),
+      linear-gradient(180deg, var(--cream) 0%, #fbeef1 100%);
+  }
+  .hero::after{
+    content:''; position:absolute; inset:0;
+    background-image: radial-gradient(rgba(74,17,40,0.05) 1.4px, transparent 1.4px);
+    background-size:26px 26px; opacity:0.5; pointer-events:none;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:40px; align-items:center;}
+  .eyebrow{display:flex; align-items:center; gap:14px; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:var(--honey); margin-bottom:22px; font-weight:500;}
+  .eyebrow .rule{width:40px; height:1px; background:var(--honey);}
+  .hero h1{font-size:clamp(44px, 6.6vw, 80px); line-height:1.02; font-weight:500;}
+  .hero h1 em{font-style:italic; font-weight:300; color:var(--rose); position:relative;}
+  .hero h1 em::after{
+    content:''; position:absolute; left:-4px; right:-4px; bottom:6px; height:12px; background:rgba(201,112,100,0.18); z-index:-1; border-radius:6px;
+  }
+  .hero-sub{max-width:450px; margin-top:24px; font-size:16.5px; color:var(--coffee-soft);}
+  .hero-actions{display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;}
+  .btn-primary{background:var(--coffee); color:var(--cream); padding:16px 30px; font-size:14px; letter-spacing:0.03em; border-radius:26px; transition:all .25s ease; box-shadow:0 10px 24px -10px rgba(74,17,40,0.5); display:inline-flex; align-items:center; gap:8px;}
+  .btn-primary:hover{background:var(--honey); transform:translateY(-2px); box-shadow:0 14px 28px -10px rgba(201,138,44,0.55);}
+  .btn-secondary{padding:16px 30px; font-size:14px; letter-spacing:0.03em; border:1.5px solid var(--coffee); border-radius:26px; transition:all .25s ease;}
+  .btn-secondary:hover{background:var(--coffee); color:var(--cream); transform:translateY(-2px);}
+
+  .hero-visual{position:relative;}
+  .sundial-box{
+    position:relative; aspect-ratio:1/1; max-width:360px; margin:0 auto;
+    border-radius:50%; background:radial-gradient(circle at 35% 28%, #fdf3f5, var(--cream-2) 68%);
+    border:1px solid var(--line); box-shadow:0 40px 70px -24px rgba(74,17,40,0.3), inset 0 0 0 10px rgba(255,255,255,0.4);
+  }
+  .sundial-box::before{content:''; position:absolute; inset:16px; border-radius:50%; border:1px dashed rgba(74,17,40,0.25);}
+  .gnomon{position:absolute; left:50%; top:50%; width:4px; height:38%; background:var(--coffee); transform-origin:bottom center; transform:translate(-50%,-100%) rotate(0deg); border-radius:3px 3px 0 0;}
+  .shadow{position:absolute; left:50%; bottom:50%; width:3px; height:34%; background:rgba(74,17,40,0.28); transform-origin:bottom center; transform:translateX(-50%) rotate(35deg); animation:sundial-move 18s ease-in-out infinite; border-radius:2px 2px 0 0; filter:blur(0.5px);}
+  @keyframes sundial-move{0%{transform:translateX(-50%) rotate(15deg);} 50%{transform:translateX(-50%) rotate(55deg);} 100%{transform:translateX(-50%) rotate(15deg);}}
+  .sundial-label{position:absolute; bottom:26px; left:50%; transform:translateX(-50%); text-align:center; font-size:11.5px; letter-spacing:0.06em; color:var(--coffee-soft);}
+  .sundial-label strong{display:block; font-family:'Fraunces',serif; font-size:14px; color:var(--coffee); font-weight:500;}
+
+  .seal{position:absolute; top:-18px; right:-6px; width:108px; height:108px; z-index:5;}
+  .seal svg{width:100%; height:100%; animation:spin 22s linear infinite;}
+  @keyframes spin{from{transform:rotate(0deg);} to{transform:rotate(360deg);}}
+  .seal-center{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:44px; height:44px; border-radius:50%; background:var(--coffee); display:flex; align-items:center; justify-content:center;}
+
+  .hero-meta{margin-top:76px; display:flex; gap:54px; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:24px;}
+  .hero-meta div{font-size:13px; color:var(--coffee-soft);}
+  .hero-meta strong{display:block; font-family:'Fraunces',serif; font-size:15px; color:var(--coffee); font-weight:500; margin-bottom:4px;}
+
+  /* SECTION SHARED */
+  section{padding:120px 0; position:relative;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:60px; flex-wrap:wrap;}
+  .section-tag{font-size:13px; letter-spacing:0.18em; text-transform:uppercase; color:var(--honey); margin-bottom:12px; display:flex; align-items:center; gap:10px; font-weight:500;}
+  .section-tag::before{content:''; width:22px; height:1px; background:var(--honey);}
+  .section-head h2{font-size:clamp(30px, 3.6vw, 46px); font-weight:500; max-width:600px;}
+  .section-head p{max-width:320px; color:var(--coffee-soft); font-size:15px;}
+
+  /* ABOUT */
+  .about{background:linear-gradient(180deg, #fbeef1, var(--cream-2));}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;}
+  .about-visual{aspect-ratio:4/5; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 30px 60px -24px rgba(74,17,40,0.35);}
+  .about-text p{color:var(--coffee-soft); margin-bottom:18px; max-width:480px;}
+  .about-text p:first-of-type{color:var(--coffee); font-size:20px; font-family:'Fraunces',serif; font-weight:400; line-height:1.55;}
+  .about-stats{display:flex; gap:46px; margin-top:32px; flex-wrap:wrap;}
+  .about-stats div strong{display:block; font-family:'Fraunces',serif; font-size:34px; color:var(--honey); font-weight:600;}
+  .about-stats div span{font-size:13px; color:var(--coffee-soft);}
+
+  /* SPECIAL BANNER */
+  .special-band{background:linear-gradient(120deg, var(--coffee), #2f0a1a); color:var(--cream); padding:56px 0; position:relative; overflow:hidden;}
+  .special-inner{display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; position:relative;}
+  .special-text{display:flex; align-items:center; gap:24px;}
+  .special-icon{width:56px; height:56px; flex-shrink:0; color:var(--honey-bright);}
+  .special-text h3{font-size:24px; font-weight:500;}
+  .special-text p{color:rgba(251,243,231,0.65); font-size:14px; margin-top:4px;}
+  .special-cta{background:var(--honey-bright); color:var(--coffee); padding:14px 28px; border-radius:24px; font-size:13.5px; letter-spacing:0.03em; font-weight:500; white-space:nowrap; transition:transform .2s ease;}
+  .special-cta:hover{transform:translateY(-2px);}
+
+  /* MENU & BADGES */
+  .menu-tabs{display:flex; gap:10px; margin-bottom:46px; flex-wrap:wrap;}
+  .menu-tab{padding:11px 22px; font-size:13px; letter-spacing:0.03em; border:1px solid var(--line); border-radius:22px; cursor:pointer; background:var(--cream); color:var(--coffee-soft); transition:all .25s ease; font-family:'Work Sans', sans-serif;}
+  .menu-tab.active, .menu-tab:hover{border-color:var(--honey); color:var(--coffee); background:rgba(201,138,44,0.14); box-shadow:0 4px 12px -4px rgba(201,138,44,0.3);}
+  .menu-panel{display:none;}
+  .menu-panel.active{display:block; animation:fadeUp .5s ease;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+  .menu-list{display:grid; grid-template-columns:1fr 1fr; gap:16px 34px;}
+  .menu-item{display:flex; justify-content:space-between; gap:20px; padding:22px 24px; background:var(--cream); border:1px solid var(--line); border-radius:12px; transition:all .25s ease;}
+  .menu-item:hover{border-color:var(--honey); box-shadow:0 10px 26px -14px rgba(74,17,40,0.3); transform:translateY(-2px);}
+  .menu-item .name{font-family:'Fraunces', serif; font-size:18px; font-weight:500; display:flex; align-items:center; gap:8px;}
+  .menu-item .desc{color:var(--coffee-soft); font-size:13.5px; margin-top:6px; max-width:280px;}
+  .menu-item .price{font-family:'Fraunces', serif; color:var(--honey); font-size:18px; white-space:nowrap; font-weight:500;}
+  .badge-veg{width:12px; height:12px; border:1px solid green; display:inline-flex; align-items:center; justify-content:center; padding:1px;}
+  .badge-veg::after{content:''; width:6px; height:6px; background:green; border-radius:50%;}
+  .badge-egg{width:12px; height:12px; border:1px solid #b83b5e; display:inline-flex; align-items:center; justify-content:center; padding:1px;}
+  .badge-egg::after{content:''; width:6px; height:6px; background:#b83b5e; border-radius:50%;}
+
+  /* GALLERY */
+  .gallery{background:linear-gradient(180deg, var(--cream-2), var(--cream));}
+  .gallery-grid{display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:140px; gap:16px;}
+  .g-item{border-radius:12px; overflow:hidden; position:relative; box-shadow:0 14px 30px -18px rgba(74,17,40,0.35);}
+  .g-item img{width:100%; height:100%; object-fit:cover;}
+  .g-item::after{content:attr(data-caption); position:absolute; left:0; right:0; bottom:0; padding:14px; font-size:12.5px; letter-spacing:0.03em; color:#fff; background:linear-gradient(0deg, rgba(0,0,0,0.7), transparent); opacity:0; transition:opacity .3s ease;}
+  .g-item:hover::after{opacity:1;}
+  .g-item:nth-child(1){grid-row:span 2; grid-column:span 2;}
+  .g-item:nth-child(4){grid-row:span 2;}
+
+  /* REVIEWS */
+  .testimonials-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;}
+  .t-card{background:var(--cream); border:1px solid var(--line); border-radius:14px; padding:32px; position:relative; transition:transform .25s ease;}
+  .t-card:hover{transform:translateY(-4px);}
+  .t-quote-mark{font-family:'Fraunces',serif; font-size:44px; color:var(--honey); line-height:1; opacity:0.6;}
+  .t-card p{color:var(--coffee-soft); font-size:14.5px; margin-bottom:20px;}
+  .t-stars{color:var(--honey); font-size:14px; margin-bottom:14px; letter-spacing:2px;}
+  .t-name{font-family:'Fraunces',serif; font-size:15px; font-weight:500;}
+
+  /* VISIT & MAP */
+  .visit{background:linear-gradient(180deg, var(--cream), var(--cream-2));}
+  .visit-grid{display:grid; grid-template-columns:1fr 1fr; gap:70px;}
+  .hours-table{width:100%; border-collapse:collapse; margin-top:6px;}
+  .hours-table tr{border-bottom:1px solid var(--line);}
+  .hours-table td{padding:13px 0; font-size:14px;}
+  .hours-table td:last-child{text-align:right; font-family:'Fraunces',serif; color:var(--honey); font-weight:500;}
+  .address-card{background:var(--cream); border:1px solid var(--line); border-radius:14px; padding:24px; margin-top:20px;}
+
+  .order-card{background:var(--coffee); color:var(--cream); border-radius:18px; padding:44px;}
+  .order-options{display:flex; flex-direction:column; gap:14px; margin-top:20px;}
+  .order-option{display:flex; justify-content:space-between; align-items:center; padding:16px 20px; border:1px solid rgba(251,243,231,0.18); border-radius:10px; transition:all .2s ease;}
+  .order-option:hover{border-color:var(--honey-bright); background:rgba(224,165,63,0.1);}
+
+  /* FLOATING WHATSAPP BUTTON */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #25D366;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 14px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease;
+  }
+  .whatsapp-float:hover { transform: scale(1.05); }
+
+  /* FOOTER */
+  footer{background:var(--coffee); color:var(--cream); padding:64px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:44px;}
+  .footer-col h5{font-size:13px; text-transform:uppercase; color:var(--honey-bright); margin-bottom:16px;}
+  .footer-col a, .footer-col p{display:block; font-size:14px; color:rgba(251,243,231,0.7); margin-bottom:10px;}
+  .footer-bottom{display:flex; justify-content:space-between; padding-top:24px; border-top:1px solid rgba(251,243,231,0.15); font-size:12.5px; color:rgba(251,243,231,0.5);}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:900px){
+    .hero-grid, .about-grid, .visit-grid{grid-template-columns:1fr;}
+    .menu-list{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .testimonials-grid, .footer-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:720px){
+    .nav-links{position:fixed; top:0; right:-100%; height:100vh; width:78%; background:var(--cream); flex-direction:column; justify-content:center; padding:40px; transition:right .4s ease; gap:26px; z-index:99;}
+    .nav-links.open{right:0;}
+    .menu-toggle{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <svg viewBox="10 5 190 190">
+        <defs><clipPath id="badgeClipH"><rect x="20" y="15" width="170" height="170" rx="34"/></clipPath></defs>
+        <rect x="20" y="15" width="170" height="170" rx="34" fill="#3a0d1f"/>
+        <rect x="20" y="15" width="170" height="170" fill="#c9932f" clip-path="url(#badgeClipH)"/>
+        <rect x="20" y="15" width="170" height="92" fill="#7a2142" clip-path="url(#badgeClipH)"/>
+        <rect x="20" y="103" width="170" height="4" fill="#fbf6f2" clip-path="url(#badgeClipH)"/>
+        <path d="M65,120 Q64,70 105,66 Q146,70 145,120 Q145,134 105,134 Q65,134 65,120 Z" fill="#fbf6f2" stroke="#3a0d1f" stroke-width="4"/>
+      </svg>
+      <span class="brand-text">Sundial Bakehouse<em>Est. Sitamarhi</em></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a href="#visit" class="nav-cta">Order / Visit</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="rule"></span> Bakery &amp; Café · Sitamarhi</div>
+      <h1>Baked in step<br>with the <em>sun.</em></h1>
+      <p class="hero-sub">Sourdough at sunrise, savouries by midday, cakes for the golden hour — baked fresh daily on Dumra Road.</p>
+      <div class="hero-actions">
+        <a href="#visit" class="btn-primary">Visit Us Today</a>
+        <a href="#menu" class="btn-secondary">See the Menu</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="sundial-box reveal">
+        <div class="gnomon"></div>
+        <div class="shadow"></div>
+        <div class="sundial-label"><strong>Today's Bake</strong>Sourdough · ready 8:00 am</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-visual reveal">
+      <img src="images/storefront.jpg" alt="Sundial Bakehouse Dumra Road Storefront" loading="lazy" onerror="this.remove()">
+      <div class="ph-img">Storefront Photo</div>
+    </div>
+    <div class="about-text reveal">
+      <span class="section-tag">Our Story</span>
+      <p>A bakehouse that keeps time by the oven, not the clock.</p>
+      <p>Every loaf is proofed slowly and baked fresh each morning on Dumra Road for the Rajopatti neighbourhood.</p>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-tag">The Menu</span>
+        <h2>What's fresh today.</h2>
+      </div>
+    </div>
+
+    <div class="menu-tabs" role="tablist">
+      <button class="menu-tab active" role="tab" aria-selected="true" data-tab="sunrise">Sunrise Bakes</button>
+      <button class="menu-tab" role="tab" aria-selected="false" data-tab="midday">Midday Table</button>
+    </div>
+
+    <div class="menu-panel active" id="sunrise" role="tabpanel">
+      <div class="menu-list">
+        <div class="menu-item">
+          <div>
+            <div class="name"><span class="badge-veg" title="Vegetarian"></span> Classic Sourdough Loaf</div>
+            <div class="desc">24-hour proof, crisp crust</div>
+          </div>
+          <div class="price">₹180</div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name"><span class="badge-egg" title="Contains Egg"></span> Butter Croissant</div>
+            <div class="desc">Laminated fresh each morning</div>
+          </div>
+          <div class="price">₹70</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-panel" id="midday" role="tabpanel">
+      <div class="menu-list">
+        <div class="menu-item">
+          <div>
+            <div class="name"><span class="badge-veg"></span> Paneer Tikka Puff</div>
+            <div class="desc">Flaky pastry, spiced filling</div>
+          </div>
+          <div class="price">₹60</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><span class="section-tag">Gallery</span><h2>Fresh from the oven</h2></div>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="g-item" data-caption="Fresh sourdough bread"><img src="images/bread.jpg" alt="Fresh Sourdough Bread" loading="lazy" onerror="this.remove()"><div class="ph-img">Fresh Bread</div></div>
+      <div class="g-item" data-caption="Our bakery counter"><img src="images/counter.jpg" alt="Bakery Counter" loading="lazy" onerror="this.remove()"><div class="ph-img">Counter</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div class="visit-info reveal">
+      <span class="section-tag">Visit Us</span>
+      <h2>Find us on Dumra Road.</h2>
+      <table class="hours-table">
+        <tr><td>Monday – Saturday</td><td>7:30 am – 9:30 pm</td></tr>
+        <tr><td>Sunday</td><td>8:00 am – 9:00 pm</td></tr>
+      </table>
+      <div class="address-card">
+        <h4>Address</h4>
+        <p>Sundial Bakehouse<br>Dumra Road, Rajopatti, Sitamarhi</p>
+      </div>
+      <!-- Embedded Google Map -->
+      <div style="border-radius:14px; overflow:hidden; margin-top:20px;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14272.50293817349!2d85.4833!3d26.5917!2m3!1f0!1f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39edc5c000000001%3A0x1!2sDumra%20Rd%2C%20Sitamarhi%2C%20Bihar!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="order-card reveal">
+      <h3>Get in touch</h3>
+      <p>Call or message us directly on WhatsApp for daily orders and custom cakes.</p>
+      <div class="order-options">
+        <a href="tel:+919876543210" class="order-option"><span>Call Bakery</span><span>+91 98765 43210 →</span></a>
+        <a href="https://wa.me/919876543210" target="_blank" class="order-option"><span>WhatsApp Orders</span><span>Chat Now →</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floating WhatsApp CTA -->
+<a href="https://wa.me/919876543210?text=Hi%20Sundial%20Bakehouse,%20I%20want%20to%20place%20an%20order." class="whatsapp-float" target="_blank" aria-label="Order on WhatsApp">
+  <span>💬 Order on WhatsApp</span>
+</a>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>© 2026 Sundial Bakehouse. All rights reserved.</span>
+      <span>Dumra Road, Rajopatti, Sitamarhi</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navigation scroll behavior
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+
+  // Mobile menu toggle & Scroll Lock
+  const toggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Tab switching with ARIA updates
+  const tabs = document.querySelectorAll('.menu-tab');
+  const panels = document.querySelectorAll('.menu-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Scroll animations
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:0.12});
+  reveals.forEach(r => io.observe(r));
+</script>
+
+</body>
+</html>
+  
+   
