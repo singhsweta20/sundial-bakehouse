@@ -1,164 +1,388 @@
-// Extended Bakery Menu Data (12 Delicious Items)
-const menuItems = [
-  {
-    id: 1,
-    title: "Artisanal Sourdough",
-    category: "bakery",
-    price: "₹180",
-    image: "https://images.unsplash.com/photo-1585478259715-876a6a81fc08?w=500&auto=format&fit=crop&q=80",
-    description: "Naturally fermented, crisp crust, and soft airy interior baked fresh daily."
-  },
-  {
-    id: 2,
-    title: "Butter Croissant",
-    category: "bakery",
-    price: "₹120",
-    image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&auto=format&fit=crop&q=80",
-    description: "Flaky, buttery, layered French pastry baked fresh every morning."
-  },
-  {
-    id: 3,
-    title: "Belgian Chocolate Truffle",
-    category: "cakes",
-    price: "₹499",
-    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=80",
-    description: "Rich dark chocolate ganache layered with moist chocolate sponge."
-  },
-  {
-    id: 4,
-    title: "Blueberry Cheesecake",
-    category: "cakes",
-    price: "₹160",
-    image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=500&auto=format&fit=crop&q=80",
-    description: "Creamy baked cheesecake topped with tangy fresh blueberry compote."
-  },
-  {
-    id: 5,
-    title: "Signature Cappuccino",
-    category: "coffee",
-    price: "₹150",
-    image: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?w=500&auto=format&fit=crop&q=80",
-    description: "Rich espresso blended with fresh steam-foamed milk."
-  },
-  {
-    id: 6,
-    title: "Red Velvet Cupcake",
-    category: "cakes",
-    price: "₹85",
-    image: "https://images.unsplash.com/photo-1587314168485-3236d6710814?w=500&auto=format&fit=crop&q=80",
-    description: "Soft red velvet sponge topped with smooth cream cheese frosting."
-  },
-  {
-    id: 7,
-    title: "Garlic Herb Focaccia",
-    category: "bakery",
-    price: "₹140",
-    image: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=500&auto=format&fit=crop&q=80",
-    description: "Italian flatbread baked with rosemary, garlic oil, and sea salt."
-  },
-  {
-    id: 8,
-    title: "Almond Croissant",
-    category: "bakery",
-    price: "₹150",
-    image: "https://images.unsplash.com/photo-1530610476181-d83430b64dcd?w=500&auto=format&fit=crop&q=80",
-    description: "Toasted croissant filled with almond frangipane and flaked almonds."
-  },
-  {
-    id: 9,
-    title: "Fresh Strawberry Tart",
-    category: "cakes",
-    price: "₹130",
-    image: "https://images.unsplash.com/photo-1519869325930-281384150729?w=500&auto=format&fit=crop&q=80",
-    description: "Crisp pastry shell filled with vanilla custard and fresh strawberries."
-  },
-  {
-    id: 10,
-    title: "Iced Hazelnut Latte",
-    category: "coffee",
-    price: "₹170",
-    image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=500&auto=format&fit=crop&q=80",
-    description: "Chilled espresso served over ice with hazelnut syrup and cold milk."
-  },
-  {
-    id: 11,
-    title: "French Macarons (6 Pcs)",
-    category: "cakes",
-    price: "₹290",
-    image: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=500&auto=format&fit=crop&q=80",
-    description: "Assorted colourful meringue cookies filled with chocolate & fruit ganache."
-  },
-  {
-    id: 12,
-    title: "Cinnamon Glaze Roll",
-    category: "bakery",
-    price: "₹110",
-    image: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=500&auto=format&fit=crop&q=80",
-    description: "Soft swirled sweet dough packed with aromatic cinnamon glaze."
-  }
-];
-
-const menuGrid = document.getElementById('menu-grid');
-const filterBtns = document.querySelectorAll('.filter-btn');
-
-// Render Items to Grid
-function displayMenuItems(items) {
-  menuGrid.innerHTML = items.map(item => {
-    const whatsappMsg = encodeURIComponent(`Hello Sundial Bakehouse, I want to order: ${item.title} (${item.price})`);
-    return `
-      <div class="menu-card">
-        <div class="menu-img-wrapper">
-          <img src="${item.image}" alt="${item.title}">
-        </div>
-        <div class="menu-card-content">
-          <div>
-            <div class="item-header">
-              <h3 class="item-title">${item.title}</h3>
-              <span class="item-price">${item.price}</span>
-            </div>
-            <p class="item-desc">${item.description}</p>
-          </div>
-          <a href="https://wa.me/917667053130?text=${whatsappMsg}" target="_blank" class="order-item-btn">
-            <i class="fa-brands fa-whatsapp"></i> Order This Item
-          </a>
-        </div>
-      </div>
-    `;
-  }).join('');
+html {
+  scroll-behavior: smooth;
 }
 
-// Category Filter Setup
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    const category = e.target.dataset.category;
-    if (category === 'all') {
-      displayMenuItems(menuItems);
-    } else {
-      const filtered = menuItems.filter(item => item.category === category);
-      displayMenuItems(filtered);
-    }
-  });
-});
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #faf7f5;
+  color: #2d2424;
+  line-height: 1.6;
+}
 
-// Smooth Click Navigation
-document.querySelectorAll('.nav-links a').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
-    
-    if (targetSection) {
-      targetSection.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  });
-});
+/* Navbar */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ebdcd5;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
 
-// Initial Setup
-document.addEventListener('DOMContentLoaded', () => {
-  displayMenuItems(menuItems);
-});
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5c1d24;
+  text-decoration: none;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #554845;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #80232c;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1400&auto=format&fit=crop&q=80') center/cover no-repeat;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 20px;
+}
+
+.hero-overlay h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+}
+
+.hero-overlay p {
+  font-size: 1.1rem;
+  max-width: 650px;
+  margin: 0 auto 24px auto;
+}
+
+.whatsapp-btn {
+  background-color: #80232c;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.whatsapp-btn:hover {
+  background-color: #5c1d24;
+  transform: translateY(-2px);
+}
+
+/* Section Offsets */
+section, footer {
+  scroll-margin-top: 80px;
+}
+
+/* About Section */
+.about-section {
+  text-align: center;
+  padding: 50px 20px 30px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #5c1d24;
+  margin-bottom: 14px;
+}
+
+.about-section p {
+  color: #635350;
+  font-size: 1.05rem;
+}
+
+/* Chef Section */
+.chef-section {
+  max-width: 1100px;
+  margin: 20px auto 60px auto;
+  padding: 0 20px;
+}
+
+.chef-container {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  border: 1px solid #f0e6e1;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.chef-image-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 450px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.chef-image-wrapper img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.chef-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(92, 29, 36, 0.88);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.chef-content {
+  flex: 1;
+}
+
+.chef-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #5c1d24;
+  margin-bottom: 6px;
+}
+
+.chef-subtitle {
+  color: #80232c;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+.chef-bio {
+  color: #554845;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.chef-highlights {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.highlight-item {
+  background: #faf7f5;
+  border: 1px solid #ebdcd5;
+  padding: 8px 14px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #5c1d24;
+}
+
+@media (max-width: 768px) {
+  .chef-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .chef-image-wrapper {
+    max-width: 100%;
+  }
+}
+
+/* Menu Section */
+.menu-section {
+  max-width: 1100px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.menu-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  text-align: center;
+  color: #5c1d24;
+  margin-bottom: 24px;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  background: #ffffff;
+  border: 1px solid #d9c5bd;
+  color: #554845;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: #80232c;
+  color: #ffffff;
+  border-color: #80232c;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.menu-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0e6e1;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.menu-img-wrapper {
+  height: 190px;
+  overflow: hidden;
+}
+
+.menu-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.menu-card:hover .menu-img-wrapper img {
+  transform: scale(1.08);
+}
+
+.menu-card-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.item-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: #2d2424;
+}
+
+.item-price {
+  font-weight: 700;
+  color: #80232c;
+  font-size: 1.1rem;
+}
+
+.item-desc {
+  font-size: 0.88rem;
+  color: #6e5e5b;
+  margin-bottom: 16px;
+}
+
+.order-item-btn {
+  background-color: #fceee8;
+  color: #80232c;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.order-item-btn:hover {
+  background-color: #80232c;
+  color: #ffffff;
+}
+
+/* Footer */
+.footer {
+  background-color: #3b1116;
+  color: #fceee8;
+  padding: 40px 20px 20px 20px;
+  text-align: center;
+}
+
+.footer h2 {
+  font-family: 'Playfair Display', serif;
+  color: #fceee8;
+  margin-bottom: 20px;
+}
+
+.footer-info p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.footer-info i {
+  color: #e5989b;
+  margin-right: 8px;
+}
+
+.copyright {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  color: #d9c5bd;
+}
