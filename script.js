@@ -1,18 +1,273 @@
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Sundial Bakehouse website fully loaded.');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  // Smooth scroll for nav links
-  const navLinks = document.querySelectorAll('nav a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
-      if (targetId.startsWith('#')) {
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          e.preventDefault();
-          targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    });
-  });
-});
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #faf7f5;
+  color: #2d2424;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ebdcd5;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #5c1d24;
+  text-decoration: none;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #554845;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #80232c;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+              url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1400&auto=format&fit=crop&q=80') center/cover no-repeat;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  padding: 0 20px;
+}
+
+.hero-overlay h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+}
+
+.hero-overlay p {
+  font-size: 1.1rem;
+  max-width: 650px;
+  margin: 0 auto 24px auto;
+}
+
+.whatsapp-btn {
+  background-color: #80232c;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.whatsapp-btn:hover {
+  background-color: #5c1d24;
+  transform: translateY(-2px);
+}
+
+/* About Section */
+.about-section {
+  text-align: center;
+  padding: 50px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #5c1d24;
+  margin-bottom: 14px;
+}
+
+.about-section p {
+  color: #635350;
+  font-size: 1.05rem;
+}
+
+/* Menu Section */
+.menu-section {
+  max-width: 1100px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.menu-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  text-align: center;
+  color: #5c1d24;
+  margin-bottom: 24px;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  background: #ffffff;
+  border: 1px solid #d9c5bd;
+  color: #554845;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: #80232c;
+  color: #ffffff;
+  border-color: #80232c;
+}
+
+/* Menu Grid Cards */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.menu-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0e6e1;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.menu-img-wrapper {
+  height: 180px;
+  overflow: hidden;
+}
+
+.menu-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.menu-card:hover .menu-img-wrapper img {
+  transform: scale(1.08);
+}
+
+.menu-card-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.item-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: #2d2424;
+}
+
+.item-price {
+  font-weight: 700;
+  color: #80232c;
+  font-size: 1.1rem;
+}
+
+.item-desc {
+  font-size: 0.88rem;
+  color: #6e5e5b;
+  margin-bottom: 16px;
+}
+
+.order-item-btn {
+  background-color: #fceee8;
+  color: #80232c;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.2s;
+}
+
+.order-item-btn:hover {
+  background-color: #80232c;
+  color: #ffffff;
+}
+
+/* Footer */
+.footer {
+  background-color: #3b1116;
+  color: #fceee8;
+  padding: 40px 20px 20px 20px;
+  text-align: center;
+}
+
+.footer-info p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.footer-info i {
+  color: #e5989b;
+  margin-right: 8px;
+}
+
+.copyright {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  color: #d9c5bd;
+}
