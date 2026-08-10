@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- External CSS Link -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -45,29 +46,13 @@
     <p>We use locally sourced ingredients and traditional slow-fermentation techniques to give you the most delicious bread and desserts in Sitamarhi.</p>
   </section>
 
-  <!-- Chef / Kitchen Section -->
+  <!-- Compact Chef Banner Section -->
   <section id="chef" class="chef-section">
-    <div class="chef-container">
-      <div class="chef-image-wrapper">
-        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&auto=format&fit=crop&q=80" alt="Master Chef preparing fresh dough in kitchen">
-        <span class="chef-badge"><i class="fa-solid fa-award"></i> Master Baker</span>
-      </div>
-      <div class="chef-content">
-        <h2>Crafted With Passion & Precision</h2>
-        <p class="chef-subtitle">Behind Every Delicacy Lies Love & Tradition</p>
-        <p class="chef-bio">
-          Our head chef brings years of artisanal baking expertise right into our Sitamarhi kitchen. From hand-kneading organic sourdough to crafting delicate French pastries, every single bake is prepared daily with pure butter, premium cocoa, and zero artificial preservatives.
-        </p>
-        <div class="chef-highlights">
-          <div class="highlight-item">
-            <i class="fa-solid fa-wheat-awn"></i>
-            <span>100% Organic Ingredients</span>
-          </div>
-          <div class="highlight-item">
-            <i class="fa-solid fa-fire-burner"></i>
-            <span>Freshly Baked Every Morning</span>
-          </div>
-        </div>
+    <div class="chef-compact-card">
+      <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=300&auto=format&fit=crop&q=80" alt="Master Baker" class="chef-avatar">
+      <div class="chef-text">
+        <h3><i class="fa-solid fa-award" style="color: #80232c; font-size: 1.1rem;"></i> Crafted By Master Bakers</h3>
+        <p>Baked fresh daily in Sitamarhi using 100% organic ingredients, pure butter, and traditional slow-fermentation techniques.</p>
       </div>
     </div>
   </section>
@@ -84,7 +69,7 @@
       <button class="filter-btn" data-category="coffee">Beverages</button>
     </div>
 
-    <!-- Items Grid with Image, Price & WhatsApp Link -->
+    <!-- Items Grid -->
     <div class="menu-grid" id="menu-grid">
       <!-- Items dynamically loaded via script.js -->
     </div>
@@ -103,6 +88,7 @@
     </div>
   </footer>
 
+  <!-- External JavaScript Link -->
   <script src="script.js"></script>
 </body>
 </html>
