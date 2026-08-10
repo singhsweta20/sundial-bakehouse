@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,13 +15,14 @@ body {
   line-height: 1.6;
 }
 
-/* Navbar */
+/* Navbar Fixes */
 .navbar {
   background-color: #ffffff;
   border-bottom: 1px solid #ebdcd5;
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .nav-container {
@@ -42,7 +47,9 @@ body {
   text-decoration: none;
   color: #554845;
   font-weight: 600;
+  font-size: 1rem;
   transition: color 0.2s;
+  cursor: pointer;
 }
 
 .nav-links a:hover {
@@ -51,7 +58,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
               url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1400&auto=format&fit=crop&q=80') center/cover no-repeat;
   height: 380px;
   display: flex;
@@ -93,10 +100,15 @@ body {
   transform: translateY(-2px);
 }
 
+/* Scroll Section Offsets for Navbar */
+section, footer {
+  scroll-margin-top: 80px;
+}
+
 /* About Section */
 .about-section {
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -128,7 +140,6 @@ body {
   margin-bottom: 24px;
 }
 
-/* Filter Buttons */
 .filter-buttons {
   display: flex;
   justify-content: center;
@@ -154,7 +165,6 @@ body {
   border-color: #80232c;
 }
 
-/* Menu Grid Cards */
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -178,7 +188,7 @@ body {
 }
 
 .menu-img-wrapper {
-  height: 180px;
+  height: 190px;
   overflow: hidden;
 }
 
@@ -230,15 +240,15 @@ body {
   background-color: #fceee8;
   color: #80232c;
   border: none;
-  padding: 8px 14px;
+  padding: 10px 14px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
   display: inline-block;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .order-item-btn:hover {
@@ -252,6 +262,12 @@ body {
   color: #fceee8;
   padding: 40px 20px 20px 20px;
   text-align: center;
+}
+
+.footer h2 {
+  font-family: 'Playfair Display', serif;
+  color: #fceee8;
+  margin-bottom: 20px;
 }
 
 .footer-info p {
