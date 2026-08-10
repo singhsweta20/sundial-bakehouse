@@ -1,4 +1,4 @@
-// Bakery Menu Data
+// Extended Bakery Menu Data (12 Delicious Items)
 const menuItems = [
   {
     id: 1,
@@ -47,13 +47,61 @@ const menuItems = [
     price: "₹85",
     image: "https://images.unsplash.com/photo-1587314168485-3236d6710814?w=500&auto=format&fit=crop&q=80",
     description: "Soft red velvet sponge topped with smooth cream cheese frosting."
+  },
+  {
+    id: 7,
+    title: "Garlic Herb Focaccia",
+    category: "bakery",
+    price: "₹140",
+    image: "https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=500&auto=format&fit=crop&q=80",
+    description: "Italian flatbread baked with rosemary, garlic oil, and sea salt."
+  },
+  {
+    id: 8,
+    title: "Almond Croissant",
+    category: "bakery",
+    price: "₹150",
+    image: "https://images.unsplash.com/photo-1530610476181-d83430b64dcd?w=500&auto=format&fit=crop&q=80",
+    description: "Toasted croissant filled with almond frangipane and flaked almonds."
+  },
+  {
+    id: 9,
+    title: "Fresh Strawberry Tart",
+    category: "cakes",
+    price: "₹130",
+    image: "https://images.unsplash.com/photo-1519869325930-281384150729?w=500&auto=format&fit=crop&q=80",
+    description: "Crisp pastry shell filled with vanilla custard and fresh strawberries."
+  },
+  {
+    id: 10,
+    title: "Iced Hazelnut Latte",
+    category: "coffee",
+    price: "₹170",
+    image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=500&auto=format&fit=crop&q=80",
+    description: "Chilled espresso served over ice with hazelnut syrup and cold milk."
+  },
+  {
+    id: 11,
+    title: "French Macarons (6 Pcs)",
+    category: "cakes",
+    price: "₹290",
+    image: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=500&auto=format&fit=crop&q=80",
+    description: "Assorted colourful meringue cookies filled with chocolate & fruit ganache."
+  },
+  {
+    id: 12,
+    title: "Cinnamon Glaze Roll",
+    category: "bakery",
+    price: "₹110",
+    image: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=500&auto=format&fit=crop&q=80",
+    description: "Soft swirled sweet dough packed with aromatic cinnamon glaze."
   }
 ];
 
 const menuGrid = document.getElementById('menu-grid');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
-// Render Items on Screen
+// Render Items to Grid
 function displayMenuItems(items) {
   menuGrid.innerHTML = items.map(item => {
     const whatsappMsg = encodeURIComponent(`Hello Sundial Bakehouse, I want to order: ${item.title} (${item.price})`);
@@ -79,7 +127,7 @@ function displayMenuItems(items) {
   }).join('');
 }
 
-// Category Filtering
+// Category Filter Setup
 filterBtns.forEach(btn => {
   btn.addEventListener('click', (e) => {
     filterBtns.forEach(b => b.classList.remove('active'));
@@ -95,7 +143,7 @@ filterBtns.forEach(btn => {
   });
 });
 
-// Smooth Click Navigation Setup
+// Smooth Click Navigation
 document.querySelectorAll('.nav-links a').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
