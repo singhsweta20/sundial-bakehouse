@@ -15,20 +15,20 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="#" class="brand-logo">Sundial Bakehouse 🥐</a>
+      <a href="#hero" class="brand-logo">Sundial Bakehouse 🥐</a>
       <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#contact">Contact</a>
+        <a href="#about" class="nav-item">About</a>
+        <a href="#menu" class="nav-item">Menu</a>
+        <a href="#contact" class="nav-item">Contact</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Banner -->
-  <header class="hero-section">
+  <!-- Hero Section -->
+  <header id="hero" class="hero-section">
     <div class="hero-overlay">
       <h1>Artisanal Bakery & Cafe</h1>
       <p>Fresh sourdough, pastries, and artisanal bakes daily on Dumra Road, Rajopatti, Sitamarhi.</p>
@@ -44,26 +44,27 @@
     <p>We use locally sourced ingredients and traditional slow-fermentation techniques to give you the most delicious bread and desserts in Sitamarhi.</p>
   </section>
 
-  <!-- Menu Section with Photos & Category Filter -->
+  <!-- Menu Section -->
   <section id="menu" class="menu-section">
     <h2>Our Delicious Menu</h2>
     
-    <!-- Category Filter Buttons -->
+    <!-- Category Filters -->
     <div class="filter-buttons">
-      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn active" data-category="all">All Items</button>
       <button class="filter-btn" data-category="bakery">Breads & Bakes</button>
       <button class="filter-btn" data-category="cakes">Cakes & Desserts</button>
       <button class="filter-btn" data-category="coffee">Beverages</button>
     </div>
 
-    <!-- Dynamic Menu Grid -->
+    <!-- Items Grid with Image, Price & WhatsApp Link -->
     <div class="menu-grid" id="menu-grid">
-      <!-- JS through Dynamic Items Load honge -->
+      <!-- Items dynamically loaded via script.js -->
     </div>
   </section>
 
-  <!-- Footer / Contact Info -->
+  <!-- Contact & Footer Section -->
   <footer id="contact" class="footer">
+    <h2>Contact Us</h2>
     <div class="footer-info">
       <p><i class="fa-solid fa-location-dot"></i> Dumra Road, Rajopatti, Sitamarhi, Bihar - 843302</p>
       <p><i class="fa-regular fa-clock"></i> Mon – Sat: 7:30 AM – 9:30 PM | Sun: 8:00 AM – 9:00 PM</p>
