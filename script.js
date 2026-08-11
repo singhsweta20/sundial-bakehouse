@@ -1,5 +1,4 @@
 const menuItems = [
-  // --- BREADS & BAKERY ---
   {
     id: 1,
     title: "Artisanal Sourdough",
@@ -58,16 +57,6 @@ const menuItems = [
   },
   {
     id: 8,
-    title: "Chocolate Pain au Chocolat",
-    category: "bakery",
-    price: "₹140",
-    image: "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=500&auto=format&fit=crop&q=80",
-    description: "Traditional French flaky pastry stuffed with dark Belgian chocolate bars."
-  },
-
-  // --- CAKES, TARTS & DESSERTS ---
-  {
-    id: 9,
     title: "Belgian Chocolate Truffle",
     category: "cakes",
     price: "₹499",
@@ -75,7 +64,7 @@ const menuItems = [
     description: "Rich dark chocolate ganache layered with moist chocolate sponge."
   },
   {
-    id: 10,
+    id: 9,
     title: "Blueberry Cheesecake",
     category: "cakes",
     price: "₹160",
@@ -83,7 +72,7 @@ const menuItems = [
     description: "Creamy baked cheesecake topped with tangy fresh blueberry compote."
   },
   {
-    id: 11,
+    id: 10,
     title: "Red Velvet Cupcake",
     category: "cakes",
     price: "₹85",
@@ -91,7 +80,7 @@ const menuItems = [
     description: "Soft red velvet sponge topped with smooth cream cheese frosting."
   },
   {
-    id: 12,
+    id: 11,
     title: "Fresh Strawberry Tart",
     category: "cakes",
     price: "₹130",
@@ -99,7 +88,7 @@ const menuItems = [
     description: "Crisp pastry shell filled with vanilla custard and fresh strawberries."
   },
   {
-    id: 13,
+    id: 12,
     title: "French Macarons (6 Pcs)",
     category: "cakes",
     price: "₹290",
@@ -107,7 +96,7 @@ const menuItems = [
     description: "Assorted colourful meringue cookies filled with chocolate & fruit ganache."
   },
   {
-    id: 14,
+    id: 13,
     title: "Classic Fudgy Brownie",
     category: "cakes",
     price: "₹95",
@@ -115,25 +104,7 @@ const menuItems = [
     description: "Gooey chocolate brownie made with rich cocoa and roasted walnuts."
   },
   {
-    id: 15,
-    title: "Classic Tiramisu Jar",
-    category: "cakes",
-    price: "₹180",
-    image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500&auto=format&fit=crop&q=80",
-    description: "Coffee-soaked ladyfingers layered with mascarpone cream & cocoa powder."
-  },
-  {
-    id: 16,
-    title: "Mango Passion Pastry",
-    category: "cakes",
-    price: "₹140",
-    image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&auto=format&fit=crop&q=80",
-    description: "Light vanilla sponge infused with fresh Alphonso mango mousse."
-  },
-
-  // --- BEVERAGES ---
-  {
-    id: 17,
+    id: 14,
     title: "Signature Cappuccino",
     category: "coffee",
     price: "₹150",
@@ -141,7 +112,7 @@ const menuItems = [
     description: "Rich espresso blended with fresh steam-foamed milk."
   },
   {
-    id: 18,
+    id: 15,
     title: "Iced Hazelnut Latte",
     category: "coffee",
     price: "₹170",
@@ -149,28 +120,12 @@ const menuItems = [
     description: "Chilled espresso served over ice with hazelnut syrup and cold milk."
   },
   {
-    id: 19,
-    title: "Iced Cold Brew",
-    category: "coffee",
-    price: "₹140",
-    image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=500&auto=format&fit=crop&q=80",
-    description: "Slow-steeped Arabica coffee served smooth over ice."
-  },
-  {
-    id: 20,
+    id: 16,
     title: "Rich Hot Chocolate",
     category: "coffee",
     price: "₹160",
     image: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=500&auto=format&fit=crop&q=80",
     description: "Warm melted dark chocolate topped with fluffy marshmallows."
-  },
-  {
-    id: 21,
-    title: "Matcha Green Tea Latte",
-    category: "coffee",
-    price: "₹180",
-    image: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=500&auto=format&fit=crop&q=80",
-    description: "Authentic Japanese green tea whisked with steamed oat milk."
   }
 ];
 
@@ -202,6 +157,7 @@ function displayMenuItems(items) {
   }).join('');
 }
 
+// Category filter listener
 filterBtns.forEach(btn => {
   btn.addEventListener('click', (e) => {
     filterBtns.forEach(b => b.classList.remove('active'));
@@ -217,18 +173,44 @@ filterBtns.forEach(btn => {
   });
 });
 
-document.querySelectorAll('.nav-links a').forEach(anchor => {
+// Smooth scroll
+document.querySelectorAll('.nav-links a, .hero-cta-group a').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    e.preventDefault();
     const targetId = this.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
-    
-    if (targetSection) {
-      targetSection.scrollIntoView({
-        behavior: 'smooth'
-      });
+    if (targetId.startsWith('#')) {
+      e.preventDefault();
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
     }
   });
+});
+
+// Table Booking Form Handler
+const bookingForm = document.getElementById('booking-form');
+
+bookingForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const guests = document.getElementById('guests').value;
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
+  const notes = document.getElementById('notes').value || 'None';
+
+  const message = `Hello Sundial Bakehouse, I would like to reserve a table:%0A%0A` +
+                  `👤 *Name:* ${encodeURIComponent(name)}%0A` +
+                  `📞 *Phone:* ${encodeURIComponent(phone)}%0A` +
+                  `👥 *Guests:* ${encodeURIComponent(guests)}%0A` +
+                  `📅 *Date:* ${encodeURIComponent(date)}%0A` +
+                  `⏰ *Time:* ${encodeURIComponent(time)}%0A` +
+                  `📝 *Special Request:* ${encodeURIComponent(notes)}`;
+
+  window.open(`https://wa.me/917667053130?text=${message}`, '_blank');
 });
 
 document.addEventListener('DOMContentLoaded', () => {
