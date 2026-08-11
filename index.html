@@ -22,8 +22,8 @@
       <a href="#hero" class="brand-logo">Sundial Bakehouse 🥐</a>
       <div class="nav-links">
         <a href="#about" class="nav-item">About</a>
-        <a href="#chef" class="nav-item">Our Chef</a>
         <a href="#menu" class="nav-item">Menu</a>
+        <a href="#booking" class="nav-item">Book Table</a>
         <a href="#contact" class="nav-item">Contact</a>
       </div>
     </div>
@@ -34,9 +34,14 @@
     <div class="hero-overlay">
       <h1>Artisanal Bakery & Cafe</h1>
       <p>Fresh sourdough, pastries, and artisanal bakes daily on Dumra Road, Rajopatti, Sitamarhi.</p>
-      <a href="https://wa.me/917667053130?text=Hello%20Sundial%20Bakehouse,%20I%20would%20like%20to%20place%20an%20order!" target="_blank" class="whatsapp-btn">
-        <i class="fa-brands fa-whatsapp"></i> Order via WhatsApp
-      </a>
+      <div class="hero-cta-group">
+        <a href="#booking" class="booking-btn">
+          <i class="fa-solid fa-chair"></i> Reserve a Table
+        </a>
+        <a href="https://wa.me/917667053130?text=Hello%20Sundial%20Bakehouse,%20I%20would%20like%20to%20place%20an%20order!" target="_blank" class="whatsapp-btn">
+          <i class="fa-brands fa-whatsapp"></i> Order via WhatsApp
+        </a>
+      </div>
     </div>
   </header>
 
@@ -46,20 +51,9 @@
     <p>We use locally sourced ingredients and traditional slow-fermentation techniques to give you the most delicious bread and desserts in Sitamarhi.</p>
   </section>
 
-  <!-- Compact Chef Banner Section -->
-  <section id="chef" class="chef-section">
-    <div class="chef-compact-card">
-      <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=300&auto=format&fit=crop&q=80" alt="Master Baker" class="chef-avatar">
-      <div class="chef-text">
-        <h3><i class="fa-solid fa-award" style="color: #80232c; font-size: 1.1rem;"></i> Crafted By Master Bakers</h3>
-        <p>Baked fresh daily in Sitamarhi using 100% organic ingredients, pure butter, and traditional slow-fermentation techniques.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Menu Section -->
   <section id="menu" class="menu-section">
-    <h2>Our Extended Menu</h2>
+    <h2>Our Menu</h2>
     
     <!-- Category Filters -->
     <div class="filter-buttons">
@@ -72,6 +66,52 @@
     <!-- Items Grid -->
     <div class="menu-grid" id="menu-grid">
       <!-- Items dynamically loaded via script.js -->
+    </div>
+  </section>
+
+  <!-- Table Booking Section -->
+  <section id="booking" class="booking-section">
+    <div class="booking-card">
+      <h2><i class="fa-solid fa-utensils"></i> Book a Table Online</h2>
+      <p>Reserve your space for coffee, meetings, or celebrations.</p>
+      
+      <form id="booking-form" class="booking-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter full name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="Enter 10-digit number" required>
+          </div>
+          <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <select id="guests" required>
+              <option value="1 Guest">1 Person</option>
+              <option value="2 Guests" selected>2 Persons</option>
+              <option value="3 Guests">3 Persons</option>
+              <option value="4 Guests">4 Persons</option>
+              <option value="5-8 Guests">5 - 8 Persons (Group)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
+          </div>
+          <div class="form-group">
+            <label for="time">Time Slot</label>
+            <input type="time" id="time" required>
+          </div>
+          <div class="form-group">
+            <label for="notes">Special Requests (Optional)</label>
+            <input type="text" id="notes" placeholder="e.g. Birthday setup, Window seat">
+          </div>
+        </div>
+        <button type="submit" class="submit-booking-btn">
+          <i class="fa-brands fa-whatsapp"></i> Confirm & Book via WhatsApp
+        </button>
+      </form>
     </div>
   </section>
 
